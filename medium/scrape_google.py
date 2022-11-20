@@ -72,6 +72,6 @@ if __name__ == "__main__":
     '''
 
     os.system("echo 'relevant,url' > review.csv")
-    os.system("cat results.jsonl| jq .url | grep -v 'tagged' | sed 's/https//g' | awk -F'/' '{print $4}' | sed 's/^/,/g' >> review.csv")
+    os.system("cat results.jsonl| jq .url | grep -v 'tagged' | sed 's/https//g' | awk -F'/' '{print $4}' | sed 's/^/0,/g' >> review.csv")
 
 
