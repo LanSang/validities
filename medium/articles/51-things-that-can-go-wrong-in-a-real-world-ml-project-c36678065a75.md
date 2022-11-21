@@ -35,13 +35,13 @@ GIF via [giphy](https://giphy.com/gifs/rickandmorty-season-1-adult-swim-rick-and
 
 3.***“Building a 100% accurate model — no clarity on the acceptable trade-offs such as precision versus recall”*** ML models are often considered to be “magic.” If you have a model predicting patients with a potential of heart attack, what are you optimizing: precision or recall. In this example, a high recall that minimizes False Negatives is more important than minimizing False Positive.
 
-4.***“Using a hammer to kill an ant — not checking the performance of simpler alternatives”*** With the buzz around ML, simpler alternatives or heuristic models are often overlooked. I have seen examples where the existing heuristics are meeting the success metric by 99%, yet there will be a request to build an ML model. Also, in thinking ML models, also consider Human in Loop alternatives.
+4.***“Using a hammer to kill an ant — not checking the performance of simpler alternatives”*** <quote label="tradeoffs">With the buzz around ML, simpler alternatives or heuristic models are often overlooked. I have seen examples where the existing heuristics are meeting the success metric by 99%, yet there will be a request to build an ML model. </quote>Also, in thinking ML models, also consider Human in Loop alternatives.
 
-5.***“Not all ML problems are worth solving — the impact may not be worth the effort”*** To deliver a well-tuned robust ML model deployed in production can range from 6–24 months depending on the complexity. Being clear about the strategic value of the project is critical.
+5.***“Not all ML problems are worth solving — <quote label="tradeoffs">the impact may not be worth the effort</quote>”*** To deliver a well-tuned robust ML model deployed in production can range from 6–24 months depending on the complexity. Being clear about the strategic value of the project is critical.
 
 6. ***“Drowning the business team in technical mumbo jumbo”*** Discussing the [AUC](/understanding-auc-roc-curve-68b2303cc9c5) or normalized entropy is of little value to business users. Instead, spending time explaining the significance and what these mean in the context of the business outcome or success criteria.
 
-7. **“Underestimating project costs — ignoring data costs”** ML is data-dependent — acquiring and labeling data requires sizeable teams. Data sets are expensive to maintain. The cost of data is often ignored in project costs and can also lead to incorrect attrition decisions.
+7. **“Underestimating project costs — ignoring data costs”** <quote label="tradeoffs">ML is data-dependent — acquiring and labeling data requires sizeable teams. Data sets are expensive to maintain.</quote> The cost of data is often ignored in project costs and can also lead to incorrect attrition decisions.
 
 8. **“Treating AI Ethics as a nice-to-have”** It is important to treat ethics as both a software design consideration and a policy concern. In every aspect of the ML pipeline, evaluate the ethical considerations aligned with the values of the team — from data collection to decision making, to validation and monitoring of performance and effectiveness.
 
@@ -89,7 +89,7 @@ GIF via [giphy](https://giphy.com/gifs/schittscreek-comedy-pop-tv-xUOwG4ZJBYTfPr
 
 28. ***“Systematic data issues making overall dataset bias”*** If errors in the dataset are random, they are less harmful to model training. But if there is a bug such that a specific row or column is systematically missing, it can lead to a bias in the dataset. For instance, device details of customer clicks are missing for Andriod users due to a bug, the dataset will be biased for iPhone user activity.
 
-29. ***“Unnoticed sudden distribution changes in the data”*** Datasets are constantly evolving. Analysis of the data distribution is not a one-time activity required only at the time of model creation. Instead, there is a need to continuously monitor datasets for drifts, especially for online training.
+29. ***“Unnoticed sudden distribution changes in the data”*** <quote label="data">Datasets are constantly evolving. Analysis of the data distribution is not a one-time activity required only at the time of model creation. Instead, there is a need to continuously monitor datasets for drifts, especially for online training.</quote>
 
 30. ***“Using all the data for training — each model iteration can take days”*** While more data helps to build an accurate model, sometimes data is huge with billions of records. Training on a larger dataset takes both time and resources. Each training iteration takes longer slowing down the overall project completion. There is a need to use data sampling effectively.
 
@@ -121,7 +121,7 @@ GIF via [giphy](https://giphy.com/gifs/89a-3d-design-art-bpmNf92LmkoMw)39. ***�
 
 43. ***“Compromising interpretability prematurely for performance”*** ML projects pre-maturely fast forward into applying deep-learning. In early iterations of an ML project, an interpretable model is more important than a black box performant one. An interpretable model helps generate the next set of hypotheses about the features and data properties. The key is to start with simple models and not optimizing prematurely. Simpler models are easier to debug and iterate.
 
-44. ***“Adding new features without justification on how they increase the model quality”*** Adding features that encode new information will improve model performance, but at the cost of increased model complexity (as well as complexity on testing, deployment, maintenance of corresponding ML feature pipelines). New features added to the model should be justified using correlation matrices or training the models and analyzing results with and without the feature. In software engineering terminology, adding new features after the model is performing reasonably should be treated as a “code freeze phase” with every feature change reviewed carefully.
+44. ***“Adding new features without justification on how they increase the model quality”*** <quote label="tradeoffs">Adding features that encode new information will improve model performance, but at the cost of increased model complexity (as well as complexity on testing, deployment, maintenance of corresponding ML feature pipelines). New features added to the model should be justified using correlation matrices or training the models and analyzing results with and without the feature.</quote> In software engineering terminology, adding new features after the model is performing reasonably should be treated as a “code freeze phase” with every feature change reviewed carefully.
 
 45.***“Skipping Feature scaling”*** Without feature scaling, the model pays too much attention to the features having a wider range. This is important for model correctness.
 
@@ -131,7 +131,7 @@ GIF via [giphy](https://giphy.com/gifs/89a-3d-design-art-bpmNf92LmkoMw)39. ***�
 
 49. ***“Not attempting to reduce the dimensionality of models”*** High dimensional models are difficult to manage in training and production deployment. It is important to reduce the number of dimensions associated with the model using techniques such as [PCA](https://en.wikipedia.org/wiki/Principal_component_analysis), [LDA](https://en.wikipedia.org/wiki/Linear_discriminant_analysis).
 
-50. *“****Not applying a business lens to Classification Threshold tuning”*** “Tuning” a threshold for logistic regression is different from tuning hyperparameters such as learning rate. Choosing a threshold involves assessing the cost of making an incorrect prediction. For instance, mistakenly labeling a transaction as fraudulent will lead to delay in processing and involve wasted effort in human analysis. However, labeling a fraudulent transaction as non-fraudulent will lead to financial loss to the business. Better to optimize the threshold for recall instead of precision.
+50. *“****Not applying a business lens to Classification Threshold tuning”*** “Tuning” a threshold for logistic regression is different from tuning hyperparameters such as learning rate. Choosing a threshold involves assessing the cost of making an incorrect prediction. <quote label="formative">For instance, mistakenly labeling a transaction as fraudulent will lead to delay in processing and involve wasted effort in human analysis. However, labeling a fraudulent transaction as non-fraudulent will lead to financial loss to the business. Better to optimize the threshold for recall instead of precision.</quote>
 
 51. ***“Treating regularization as a nice-to-have in logistic regression”*** Without regularization, the asymptotic nature of logistic regression would keep driving loss towards 0 in high dimensions. Applying techniques such as L2/L1 regularization or early stopping is a must-have.
 
@@ -167,7 +167,7 @@ GIF via [giphy](https://giphy.com/gifs/89a-3d-design-art-bpmNf92LmkoMw)39. ***�
 
 66. ***“Evaluating models using different datasets”*** This one falls in the obvious category but is sometimes overlooked. Models can be trained using different datasets but an apples-to-apples comparison requires using the same test dataset.
 
-67. ***“Reporting model accuracy for the overall data”*** Instead, it is more useful to segment the dataset in cohorts (based on business definition) and evaluate the model performance for different clusters.
+67. ***“Reporting model accuracy for the overall data”*** Instead, <quote label="metrics">it is more useful to segment the dataset in cohorts (based on business definition) and evaluate the model performance for different clusters.</quote>
 
 68. ***“Training results not reproducible”*** To reproduce specific training results, it is important to snapshot the code (algo), data, config, and parameter values. Over recent times, the problem of reproducibility has been addressed in MLFlow, TFX, and multiple other solutions.
 
