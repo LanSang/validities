@@ -1,8 +1,10 @@
 from scrapingbee import ScrapingBeeClient
 from tqdm import tqdm
-
 from bs4 import BeautifulSoup
 from pathlib import Path
+
+import markdownify
+
 
 key = 'YF7YE0ZDWRP8SHXOQFMSCGJQDMQ2NMKC0GBYCXTNZD8W8MIYVRR5LRP3SA9UCBMG6Z6XNUGVNX1LIJV2'
 client = ScrapingBeeClient(key)
@@ -36,7 +38,7 @@ with open("medium_posts.txt", "r") as inf:
     # if you just open the articles themselves medium will redirect you somehow
     # even if you are just opening locally. So this code creates .html versions
     # that you can open here
-    for j in dir_.iterdir():
+    for j in Path("articles").iterdir():
         if str(j)[-5:] != ".html":
             with open(j, "r") as inf:
                 html_doc = inf.read()
@@ -45,3 +47,13 @@ with open("medium_posts.txt", "r") as inf:
                 article = str(soup.find_all('article')[0])
                 with open("articles/" + name, "w") as of:
                     of.write(article)
+
+    # ! pbpaste | sort | uniq   | tr -d '"'  > to_analyze.txt #  copy and paste the ones marked "relevant from opening article"
+
+    with open("to_analyze.txt", "r") as inf:
+        for i in inf:
+            i = i.replace("\n", "").replace("”", "")
+            with open(f"articles/{i}.html") as html_file:
+                html_doc = html_file.read()
+                with open(f"articles/{i}.md", "w") as md:
+                    md.write(markdownify.markdownify(html_doc, heading_style="ATX"))
