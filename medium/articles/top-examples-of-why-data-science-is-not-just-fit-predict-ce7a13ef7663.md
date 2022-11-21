@@ -1,0 +1,55 @@
+[![yonatan hadar](https://miro.medium.com/fit/c/96/96/1*H1jFMXDCz8AOTiTLBZfHmA.jpeg)](https://medium.com/@yonatan.hadar?source=post_page-----ce7a13ef7663--------------------------------)[yonatan hadar](https://medium.com/@yonatan.hadar?source=post_page-----ce7a13ef7663--------------------------------)[Follow](https://medium.com/m/signin?actionUrl=https%3A%2F%2Fmedium.com%2F_%2Fsubscribe%2Fuser%2Fed91e559149&operation=register&redirect=https%3A%2F%2Ftowardsdatascience.com%2Ftop-examples-of-why-data-science-is-not-just-fit-predict-ce7a13ef7663&user=yonatan+hadar&userId=ed91e559149&source=post_page-ed91e559149----ce7a13ef7663---------------------follow_byline-----------)Dec 11, 2018
+
+·7 min read[Save](https://medium.com/m/signin?actionUrl=https%3A%2F%2Fmedium.com%2F_%2Fbookmark%2Fp%2Fce7a13ef7663&operation=register&redirect=https%3A%2F%2Ftowardsdatascience.com%2Ftop-examples-of-why-data-science-is-not-just-fit-predict-ce7a13ef7663&source=--------------------------bookmark_header-----------)# Top Examples of Why Data Science is Not Just .fit().predict()
+
+<person role="Data scientist">
+https://www.linkedin.com/in/yonatan-hadar/?originalSubdomain=il
+</person>
+
+## In this post, I’m going to review some of the top concepts I learned that turned me from a technical data scientist to a good data scientist
+
+Two months ago, I finished my second year as a data scientist at YellowRoad so I decided to do a retrospective analysis on my projects, what did I do good? what interesting methods did I discover? what mistakes I did? and most importantly, what have I learned?
+
+In this post, I’m going to review some of the top concepts I learned that in my opinion turned me from a technical data scientist that run models and can easily be replaced by autoML to a good data scientist that gives value in every project even if it doesn’t require state of the art research.
+
+![]()**1) Data Leakage**
+
+According to Kaggle, data leakage is the creation of unexpected additional information in the training data, allowing a model to make unrealistically good predictions. Or a simpler definition, anything that will make your model perform better in research than in production. I had a million types of data leakage, sometimes due to a bug in the model (like entering the label as a feature), sometimes due to a bug in the dataset creation (like creating a feature that contains information about the future) and sometimes due to a bug in the business logic (like using features that cannot be used in production). The most dangerous thing about data leakage is that it is very hard to find and sometimes you discover the leakage only when you see that while your test set accuracy is 90% the production accuracy is only 60%. If you want to learn more about data leakage you can watch [my lightning talk](https://www.youtube.com/watch?v=m-tAASQA7XQ), starting at 11:15 (only 10 minutes:)).
+
+![]()**2) Selection Bias**
+<quote label="data">
+Selection bias is the bias introduced by the selection of individuals, groups or data for analysis in such a way that proper randomization is not achieved (from [Wikipedia](https://en.wikipedia.org/wiki/Selection_bias)).</quote> For example, if you are building a training set using a questionnaire that you put on your Facebook wall. The people that will answer it are probably around your age, from your country or even city, with your socioeconomic properties. If you build a model based only on this data, when it will go to production it will be exposed to a much wider variety of population and the fact that your model worked on your friends doesn’t mean it will work on everyone. Sometimes selection bias is even harder than data leakage because if you could monitor the labels of all the population you would use these labels for training. Selection bias is also harder to fix, you can reweight your training set based on the whole population or remove features that differentiate the training set from the whole population, but you can’t really evaluate if these methods work. More on selection bias on the [brilliant talk](https://www.youtube.com/watch?v=3ZWCKr0vDtc) by Lucas Bernardi.
+
+**3) Production Feedback Loops**
+
+<quote label="feedback loops">
+In many machine learning applications, the production workflow looks like this: The machine learning model performs predictions on a user behavior, the system takes actions according to the model output, the user reacts to the system and the model re-trains based on the user behavior. This feedback loops where the model effects on its own future training set can cause some biases.</quote> For example, in a recommendation engine, we rank according to what items the user clicked but if we ranked an item first, its clicking probability is higher than an item that was ranked as number 10. This way our model will never learn new things even if some item is better for the user. To address this problem we usually use exploration, ranking an item high even if it got a low score from the model with some probability or rescaling the model labels with respect to the previous ranking of the items, if an item was clicked from the second page it’s a stronger indication than if the first item was clicked. Another example is predicting if a customer will return his loan or not. We don’t know what would have happened if we approved the loans that we declined, thus, we are creating a bias for the next training set of the model.
+
+![]()**4) Special cross-validation techniques**
+
+In some cases, using a random cross-validation is not enough, because the production data will look different than the research data and we need to use special cross-validation methods. For example, in a time series dataset, there is usually a change in the data distribution due to nature or special events. If we will use a random cross-validation, the train and test data distribution will be the same and we will not know if our model is robust to this data distribution changes. Therefore, in time series we need to use a sliding window cross-validation and not a random one. More on time series cross-validation you can read in [this post](/time-series-nested-cross-validation-76adba623eb9). Another type of special case is when you have groups in your data, for example in a medical clinical trial where you have many examples of the same patient during the trial. In order to make sure that our model will generalize to new groups we need to use group cross-validation where each fold contain all the examples for a few groups and in test time we will test on new groups.
+
+**5) Choosing the “right” evaluation metric**
+
+It’s a bit cliché sentence and sometimes very hard to do in real scenarios but <quote label="metrics">the way you evaluate your model should be highly correlated with the business needs of your use case.</quote> I will give some examples, I had a project in an ad-tech company of building a bidder that will decide how much to pay for an impression. Our approach was building a model that will predict how much the company can earn from an impression and after, set the bid price based on the prediction. In this model, MSE was a bad evaluation metric even though it is probably the most popular metric for regression models. MSE punishes large mistakes more than small mistakes. In this model, most of the large mistakes were anomalies when the company has managed to sell the impression for a very high price. Predicting anomalies is almost impossible so probably even in these anomalies, everyone else will offer about the same bids as other impressions. If our predictions will be lower, we will still sometimes buy these anomalies but if we will offer large bids on regular impressions, we will lose a lot of money. Another example is ranking models, accuracy and MSE obviously don’t match to the business use case but even different ranking metrics can fit different use cases. If you present to the user only the top K items, Recall at K should be your evaluation metric. But if you present a long list of ranked items to the user and his probability of seeing an item reduces in lower ranks, NDCG is a very good metric.
+
+**6) Start with a simple model**
+
+Using the new Deep Cnn Rnn with Residual Transformer Attention of Gans with some Cyber Blockchain layers of Buzzwords is cool, even very cool but it’s not a good way to start a project. Starting with a simple model with a small number of features gives you several advantages. It is way easier to debug the model and find bugs or data leakages, you understand the model’s predictions better and know how to make it perform better and which research directions are more promising, you can fail fast if you see that there is no signal in the data and move to your next project with a little time spent and maybe the most important advantage, <quote label="utility">sometimes the simple model is just good enough for your business needs so you saved tons of research and GPU time</quote>.
+
+**7) Don’t use epsilon models**
+
+<quote label="utility">
+In a Kaggle competition, the winning model is usually an ensemble of 30 models with hundreds of features. These models are usually 0.01 points better than one good model or an ensemble of 2–3 simple models. These complex models are called epsilon models because they add only an epsilon of performance but a huge complexity to the production system. Each model or even feature is another potential place for bugs and it requires more processing time both in training and inference and more memory. In the tradeoff of cost due to complexity and performance, except special cases where the model’s accuracy is highly correlated with revenue, the simpler model wins.
+</quote>
+
+**8) Monitor your model in production**
+<quote label="drift">
+In most real-life applications, the data distribution is always changing due to business decisions, change in user behavior, changes that the model causes and more. This means that your model performance will probably decrease with time. In order to stop this phenomenon, we need to monitor the performance of the model and re-train the model or even return to the research phase when the performance decreases significantly.</quote> But, in many scenarios, we don’t have new labels (for example if we labeled our training set with Mechanical Turk) or we discover the labels after a long time (for example if we predict if a business will return its 5 years loan). In these scenarios, we should monitor the changes in the data between the training set and the production data or even monitor the changes in the distribution of the model’s predicted probabilities. [Here](https://www.youtube.com/watch?v=IqKunD0Bl5c) is a great lecture about monitoring machine learning model in production by Jannes Klaas.
+
+**Thank you for reading :)**
+
+I hope this post gave you some insights and hopefully you learned from my past mistakes and won’t do them yourself in the future.
+
+Hope you enjoyed my post, and you’re more than welcomed to read and follow my [blog](https://medium.com/@yonatan.hadar).
+

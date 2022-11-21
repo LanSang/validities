@@ -1,0 +1,9 @@
+your model performs really well on the test set but poorly in production.
+why machine learning projects fail
+how machine learning is deployed in real-world scenarios
+how do you automate the process of deploying and monitoring machine learning models?
+what are some common challenges and solutions when deploying machine learning models
+machine learning deployment challenges
+machine learning deployment tools
+what are the risks associated with putting a model into production
+challenges in deploying machine learning: a survey of case studies

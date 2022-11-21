@@ -48,6 +48,7 @@ with open("medium_posts.txt", "r") as inf:
                 with open("articles/" + name, "w") as of:
                     of.write(article)
 
+    # from here use review.numbers to manually copy the articles labeled "relevant from opening article"
     # ! pbpaste | sort | uniq   | tr -d '"'  > to_analyze.txt #  copy and paste the ones marked "relevant from opening article"
 
     with open("to_analyze.txt", "r") as inf:
