@@ -2,6 +2,10 @@
 
 ·8 min read·Member-only
 
+<person role="CEO">
+https://www.linkedin.com/in/fabrizio-fantini/?originalSubdomain=uk
+</person>
+
 [Save](https://medium.com/m/signin?actionUrl=https%3A%2F%2Fmedium.com%2F_%2Fbookmark%2Fp%2F7e8c84305aa8&operation=register&redirect=https%3A%2F%2Ftowardsdatascience.com%2Fhow-not-to-fail-at-your-data-science-project-7e8c84305aa8&source=--------------------------bookmark_header-----------)## [Notes from Industry](https://towardsdatascience.com/tagged/notes-from-industry), [BUSINESS SCIENCE](https://medium.com/tag/business-science)
 
 # How (Not) to Fail At Your Data Science Project
@@ -41,12 +45,13 @@ It’s a widespread problem. In a recent issue of the [MIT Sloan Management Revi
 
 ![]()***K-nearest neighbours* *algorithm.*** *Image credits:* E. M. Mirkes,[*Wikimedia*](https://commons.wikimedia.org/wiki/File:Map1NNReducedDataSet.png)*.*Why? If you know anything about the [k-nearest neighbours algorithm](https://en.wikipedia.org/wiki/K-nearest_neighbors_algorithm#:~:text=In%20statistics%2C%20the%20k%2Dnearest,training%20examples%20in%20data%20set.), it seems like something that would have a lot of potential. You can quickly cluster data to find patterns and similarities in seeming noise using robust clustering. **It should work, right?**
 
-The problem goes back to the very beginning. The goal was to see what could be done with a particular algorithm, not to improve KPIs. The exact project design was flawed. In effective data science projects (what I like to call [business science](/data-science-is-dead-long-live-business-science-a3059fe84e6c)), **there has to be a precise goal to get desirable outcomes to that end.**
+The problem goes back to the very beginning. The goal was to see what could be done with a particular algorithm, not to improve KPIs. The exact project design was flawed. <quote label="metrics">In effective data science projects (what I like to call [business science](/data-science-is-dead-long-live-business-science-a3059fe84e6c)), **there has to be a precise goal to get desirable outcomes to that end.**</quote>
 
 Too often, data scientists set up projects with the mindset of “let’s apply this method and see what we find”. Sometimes that delivers impressive results, but usually, it underperforms.
 
-
-> Successful data science projects instead answer a single question: How can I improve this KPI?
+<quote label="metrics">
+Successful data science projects instead answer a single question: How can I improve this KPI?
+</quote>
 > 
 > 
 
@@ -59,11 +64,12 @@ Experimenting may have its place, especially in universities, but once you are t
 
 # 3. Prioritising the wrong KPI
 
+<quote label="metrics">
 Of course, even when you put the goal first, **you only get optimal results when that goal is the *right goal*.**
 
 The impact of your efforts depends mainly on the KPI you choose to prioritise. In retail, for example, we often see people default to increasing demand forecast accuracy at the expense of more valuable insights. If you spend weeks developing the perfect tool to improve forecast accuracy by 2 points, that may not have much of an impact if data scientists ignore glaring issues in the supply chain or pricing. The gains from optimising those KPIs would be much more significant.
 
-[*KPI prioritisation*](https://www.sciencedirect.com/science/article/pii/S221282711830252X) *is critical — and challenging*. There isn’t a hard and fast rule that tells you what your goal should be, but two simple guidelines can make the decision process more manageable:
+[*KPI prioritisation*](https://www.sciencedirect.com/science/article/pii/S221282711830252X) *is critical — and challenging*.</quote> There isn’t a hard and fast rule that tells you what your goal should be, but two simple guidelines can make the decision process more manageable:
 
 **1.** **Your KPI should have a significant impact on the bottom line.**
 
@@ -75,8 +81,9 @@ The first rule is simple enough. **Your goal should deliver tangible returns**. 
 
 ![]()**Knowing the right KPI isn’t always easy.** Image credits: [Evo Pricing](https://evopricing.com/) (CC with attribution)The second guideline is harder to fulfil. Sometimes the potential for improvement of a particular KPI is hard to assess on its face. However, you can usually find out where the greatest potential lies by **identifying the crucial pain point, drain on resources or area of waste**. Eliminating that goes a long way.
 
-
-> Your target outcome ultimately makes or breaks your data science project. So choose carefully.
+<quote label="formative">
+Your target outcome ultimately makes or breaks your data science project. So choose carefully.
+</quote>
 > 
 > 
 

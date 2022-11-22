@@ -2,6 +2,10 @@
 
 ·9 min read[Save](https://medium.com/m/signin?actionUrl=https%3A%2F%2Fmedium.com%2F_%2Fbookmark%2Fp%2Fba70df6957d&operation=register&redirect=https%3A%2F%2Ftowardsdatascience.com%2Fbuilding-ml-models-that-are-useless-ba70df6957d&source=--------------------------bookmark_header-----------)# Building ML Models That Are Useless
 
+<person role="Senior Data Scientist">
+https://www.linkedin.com/in/michael-james-potter/
+</person>
+
 ## Lessons from the Healthcare Industry
 
 ![]()Pictured: Possibly a machine learning model. Kind of looks like it might be running somewhere in a hospital right?? Photo by [Carlos Muza](https://unsplash.com/@kmuza?utm_source=medium&utm_medium=referral) on [Unsplash](https://unsplash.com?utm_source=medium&utm_medium=referral)So you built an ML Model. Nice! Is it actually going to work? Not just in the Kaggle leaderboard sense, but in the literal staking-lives-on-this sense? The difference between these two was resoundingly demonstrated in a 2021 Nature paper [[1](https://www.nature.com/articles/s42256-021-00338-7)] showing that, of all the recently published Covid-19 diagnostic AI models, none of them strongly generalized to datasets outside of those they were trained on. In other words, although their leaderboard scores were nearly perfect, if any of them had actually been deployed in a hospital it would have been a mess.
@@ -11,7 +15,9 @@ This problem is near-and-dear to me since I work in the healthcare industry, and
 ![]()Pictured: Not the easiest way to figure out who has Covid-19. Photo by [National Cancer Institute](https://unsplash.com/@nci?utm_source=medium&utm_medium=referral) on [Unsplash](https://unsplash.com?utm_source=medium&utm_medium=referral)So how do you know whether your model really works, or whether your model just looks like it works? The authors in [[1](https://www.nature.com/articles/s42256-021-00338-7)] argue that explainable AI (XAI) techniques are necessary in order to truly validate a model. I agree with the sentiment, though common XAI techniques can actually come with their own set of traps [[2](https://arxiv.org/pdf/1810.03292.pdf)][[3](https://arxiv.org/pdf/1811.10154.pdf)] which deserve a separate post. For this post, though, I want to focus on something more fundamental:
 
 
-> If you want to know if your model actually works, you need to test it on (multiple) totally different datasets than you trained it on.
+<quote label="data">
+	If you want to know if your model actually works, you need to test it on (multiple) totally different datasets than you trained it on.
+</quote>
 > 
 > 
 

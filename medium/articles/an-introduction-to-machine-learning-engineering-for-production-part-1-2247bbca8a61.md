@@ -13,6 +13,7 @@ Every ML/DL project can roughly be divided into 4 phases - namely **scoping**, *
 ![]()**Phases of Project Development in ML** (Image by Author)Two scenarios that often occur after a model has been deployed are **concept drift** and **data drift.**
 
 * Concept drift refers to a *change in relationships* between input data, ‘x’ and output data ‘y’ over a period of time. **Eg-** Consider a housing price prediction model. In an anomalous situation such as the pandemic, there is a sudden change in real estate prices and hence, the model may not make accurate predictions anymore. A home that costs 50 lakh INR in a normal scenario might now cost 75 lakh INR for the same set and quantity of features like bedrooms, ACs, area in square feet, etc.
+</quote>
 
 ![]()**Concept Drift** (Image by Author)* Data drift refers to a *change in the input features*. Mathematically, it is a change in the distribution of variables that causes their meaning to change. **Eg-** Consider a model that handles bank transactions. Usually, there must be some sort of transaction limit and anything above a certain threshold might cause the credit cards to get blocked for safety purposes. However again, consider the situation of the pandemic where there have been instances of increased spending (or hoarding of essentials) due to limited availability of essentials. This would cause a normal ML model to block everyone’s cards to restrict transactions. Hence the model is not performing as desired due to a change in the normal number of transactions (input features).
 

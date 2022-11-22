@@ -64,6 +64,8 @@ When there is money involved then it is always possible for users to try and che
 
 ### nline shopping can be dangerous, as the US property website Zillow has belatedly come to realize. While many of us…
 
+
+
 www.theguardian.com](https://www.theguardian.com/business/2021/nov/04/zillow-homes-buying-selling-flip-flop)The above article clearly articulates the possibility of the system being exploited. It is clear that few housing prices in a suburb could drive the property prices in the suburb up or down. Those who understand this could artificially increase the prices of homes in a suburb.
 
 Want to know how? Let’s say there is an agent who holds many properties in a suburb. At first, the agent would sell some of the properties at an artificially higher price to a known internal contact. Then once the impact cascades to the other properties in the suburb. They sell the other properties at a bigger margin.

@@ -20,11 +20,13 @@ In most production applications, there is a lag between prediction time and grou
 
 ## What is data drift?
 
+<quote label="data">
 Data drift fundamentally measures the change in statistical distribution between two distributions, usually the same feature but at different points in time. As an example, in the univariate case where we’re looking at one input feature, we should reasonably expect that, if the shape of the feature shifts significantly between training time and prediction time, the model outputs will degrade in quality.
 
 As a toy example, if we train a ML model to solve math problems only on algebra questions, and all of a sudden geometry questions are fed into the model at prediction time, we’d expect the predictions to be pretty bad since the model hasn’t been trained on geometry questions.
 
 In essence, data drift is a proxy for our classical performance metrics in the absence of ground truth labels. The next natural question is how to formally quantify data drift.
+</quote>
 
 # Overview of data drift metrics
 

@@ -1,5 +1,9 @@
 [![Taggart Bonham](https://miro.medium.com/fit/c/96/96/1*3muSOpFlGHoOaAhvaoBrzQ.png)](https://taggartbonham.medium.com/?source=post_page-----a214d823629d--------------------------------)[Taggart Bonham](https://taggartbonham.medium.com/?source=post_page-----a214d823629d--------------------------------)[Follow](https://medium.com/m/signin?actionUrl=https%3A%2F%2Fmedium.com%2F_%2Fsubscribe%2Fuser%2F2e2b1936481f&operation=register&redirect=https%3A%2F%2Ftowardsdatascience.com%2Fml-for-product-managers-a214d823629d&user=Taggart+Bonham&userId=2e2b1936481f&source=post_page-2e2b1936481f----a214d823629d---------------------follow_byline-----------)Jan 13, 2021
 
+<person role="Venture investor">
+taggartbonham.medium.com
+</person>
+
 ·15 min read[Save](https://medium.com/m/signin?actionUrl=https%3A%2F%2Fmedium.com%2F_%2Fbookmark%2Fp%2Fa214d823629d&operation=register&redirect=https%3A%2F%2Ftowardsdatascience.com%2Fml-for-product-managers-a214d823629d&source=--------------------------bookmark_header-----------)# ML for Product Managers
 
 ## *Five steps to ship your company’s next big thing.*
@@ -56,7 +60,7 @@ Below is a model selection flowchart from [scikit-learn](https://scikit-learn.or
 
 ![]()KMeans explained (Source: [Google AIHub](https://aihub.cloud.google.com/p/products%2F0e0d2ed0-5563-4639-b348-53a83ac4ff4e))To make the model more sophisticated, we could make use of the time-series aspect and use an [ARIMA](https://en.wikipedia.org/wiki/Autoregressive_integrated_moving_average) (Auto Regressive Integrated Moving Average) model or a RNN (recurrent neural network). However, we will start out with KMeans because of its ease of implementation in order to quickly build a base model. We can change to an ARIMA model later if we need additional performance or functionality.
 
-**Create Metrics:** Metrics help us track product progress and compare different implementations. To judge our model, we’ll consider metrics for training performance, model performance and business performance. While we might look at training and model metrics early on to guide training, we ultimately live or die by business performance. Our product goal should be judged by end to end performance of business metrics.
+**Create Metrics:** Metrics help us track product progress and compare different implementations. <quote label="metrics">To judge our model, we’ll consider metrics for training performance, model performance and business performance. While we might look at training and model metrics early on to guide training, we ultimately live or die by business performance. Our product goal should be judged by end to end performance of business metrics.</quote>
 
 *Training performance* is measured by the optimization metrics as part of the ML process. There are many in use depending on the model choice. For supervised methods, people typically use confusion matrices, ROC curves, or Calibration curves (more on those [here](/20-popular-machine-learning-metrics-part-1-classification-regression-evaluation-metrics-1ca3e282a2ce)). Because we’re using an [unsupervised approach](https://scikit-learn.org/stable/modules/clustering.html#clustering-performance-evaluation) we’ll use the silhouette coefficient. This is one of the only [clustering metrics](https://scikit-learn.org/stable/modules/clustering.html#clustering-performance-evaluation) we can use as it does not require labels in the training data. The [silhouette coefficient score](https://scikit-learn.org/stable/modules/clustering.html#silhouette-coefficient) relates to a model with better defined clusters (anomalous and normal).
 

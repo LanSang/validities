@@ -1,5 +1,10 @@
 [![Rahul Agarwal](https://miro.medium.com/fit/c/96/96/1*Ihl-t4w_lAH1zfqN-2THDw.jpeg)](https://mlwhiz.medium.com/?source=post_page-----35aa55e3a43c--------------------------------)[Rahul Agarwal](https://mlwhiz.medium.com/?source=post_page-----35aa55e3a43c--------------------------------)[Follow](https://medium.com/m/signin?actionUrl=https%3A%2F%2Fmedium.com%2F_%2Fsubscribe%2Fuser%2Fe8cce06956c9&operation=register&redirect=https%3A%2F%2Ftowardsdatascience.com%2Ftake-your-machine-learning-models-to-production-with-these-5-simple-steps-35aa55e3a43c&user=Rahul+Agarwal&userId=e8cce06956c9&source=post_page-e8cce06956c9----35aa55e3a43c---------------------follow_byline-----------)Nov 11, 2019
 
+<person role="Machine learning engineer, Facebook">
+https://mlwhiz.com/
+</person>
+
+
 ·7 min read·Member-only
 
 [Save](https://medium.com/m/signin?actionUrl=https%3A%2F%2Fmedium.com%2F_%2Fbookmark%2Fp%2F35aa55e3a43c&operation=register&redirect=https%3A%2F%2Ftowardsdatascience.com%2Ftake-your-machine-learning-models-to-production-with-these-5-simple-steps-35aa55e3a43c&source=--------------------------bookmark_header-----------)![]()Image by [lumix2004](https://pixabay.com/users/lumix2004-3890388/?utm_source=link-attribution&utm_medium=referral&utm_campaign=image&utm_content=1873078) from [Pixabay](https://pixabay.com/?utm_source=link-attribution&utm_medium=referral&utm_campaign=image&utm_content=1873078)# Take your Machine Learning Models to Production with these 5 simple steps
@@ -60,9 +65,11 @@ I am a fan of the second approach. In his awesome [third course](https://click.
 
 Is your model better than the Baseline? It performed better on the local test dataset, but will it really work well on the whole?
 
+<quote label="field_study">
 To test the validity of your assumption that your model is better than the existing model, you can set up an ***A/B test***. Some users(Test group)see predictions from your model while some users(Control) see the predictions from the previous model.
 
 In fact, this is the right way to deploy your model. And you might find that indeed your model is not as good as it seems.
+</quote>
 
 
 > Being wrong is not wrong really, what’s wrong is to not anticipate that we could be wrong.
@@ -80,13 +87,19 @@ It is hard to point out the real reason behind why your model performs poorly in
 
 # 4. Your model might not even go to Production
 
+<quote label="tradeoffs">
 I have created this impressive ML model, it gives 90% accuracy, but it takes around 10 seconds to fetch a prediction.
 
 ***Is that acceptable?*** For some use-cases maybe, but really no.
+</quote>
 
 In the past, there have been many Kaggle competitions whose winners ended up creating monster ensembles to take the top spots on the leaderboard. Below is a particular mindblowing example model which was used to win Otto classification challenge on Kaggle:
 
-![]()[Source](https://www.kaggle.com/c/otto-group-product-classification-challenge/discussion/14335): 33 models and 8 engineered features used in Level 1Another example is the Netflix Million dollar Recommendation Engine Challenge. The Netflix team ended up [never](https://www.wired.com/2012/04/netflix-prize-costs/) using the wining solution due to the engineering costs involved.
+![]()[Source](https://www.kaggle.com/c/otto-group-product-classification-challenge/discussion/14335): 33 models and 8 engineered features used in Level 1Another example is the Netflix Million dollar Recommendation Engine Challenge. 
+
+<quote label="tradeoffs">
+The Netflix team ended up [never](https://www.wired.com/2012/04/netflix-prize-costs/) using the wining solution due to the engineering costs involved.
+</quote>
 
 ***So how do you make your models accurate yet easy on the machine?***
 
@@ -108,7 +121,9 @@ Here we use the soft labels/probabilities from the teacher model and use it as t
 > 
 > 
 
+<quote label="data">
 The world around us is rapidly changing, and what might be applicable two months back might not be relevant now. In a way, the models we build are reflections of the world, and if the world is changing our models should be able to reflect this change.
+</quote>
 
 ![]()Model performance deteriorates typically with time.
 

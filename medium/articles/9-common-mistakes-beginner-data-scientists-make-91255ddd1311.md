@@ -24,8 +24,9 @@ Spending time to understand the problem particularly helps:
 * map the available data sources
 * list the success metrics that translate the business needs
 * provide a realistic roadmap to meet time constraints
-
+<quote label="formative">
 There’s no magic in here really: a successful data science project goes along with a clear understanding of the problem and an organized method to solve it.
+</quote>
 
 # **2 — Not knowing the basics**
 
@@ -74,7 +75,7 @@ Let’s have an example here. Let’s say that you want to predict house prices 
 
 Feature engineering is an art by itself and highly depends on the problem and its complexity. It may also require research, interaction with external parties like domain experts: it’s a cycle of trials and errors most of the time.
 
-**Here’s what to keep in mind**: machine learning algorithms are now commodities that can be used off-the-shelf and at the end of the day, a stable and robust solution is more a matter of smart feature engineering than total brute force. So instead of looking for the most sophisticated state-of-the-art model, the solution may lie in building the right features.
+**Here’s what to keep in mind**: machine learning algorithms are now commodities that can be used off-the-shelf and at the end of the day, <quote label="features">a stable and robust solution is more a matter of smart feature engineering than total brute force. So instead of looking for the most sophisticated state-of-the-art model, the solution may lie in building the right features.</quote>
 
 If you want to automatically create features for your tabular data, there’s a fantastic tool specifically designed for this purpose. It’s called [featuretools](https://www.featuretools.com/) and it’s opensource.
 

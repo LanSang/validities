@@ -61,7 +61,9 @@ A model having high bias and low variance assumes more assumptions about the for
 
 # 6. Un-representative sampling:
 
+<quote label="sampling_biase">
 In many cases, we end up training models on a population that is significantly different from the actual population. For example, for training a model on a campaign target population and there is no previous record of the previous campaign, this results in un-representative sampling.
+</quote>
 
 # 7. Unstable Models:
 

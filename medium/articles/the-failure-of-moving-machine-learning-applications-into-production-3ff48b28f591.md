@@ -1,6 +1,9 @@
 [![Bruce H. Cottman, Ph.D.](https://miro.medium.com/fit/c/96/96/1*f958A_bXr8chKfPyY4rXLQ.jpeg)](https://dr-bruce-cottman.medium.com/?source=post_page-----3ff48b28f591--------------------------------)[Bruce H. Cottman, Ph.D.](https://dr-bruce-cottman.medium.com/?source=post_page-----3ff48b28f591--------------------------------)[Follow](https://medium.com/m/signin?actionUrl=https%3A%2F%2Fmedium.com%2F_%2Fsubscribe%2Fuser%2Fc7bcf6635d7d&operation=register&redirect=https%3A%2F%2Ftowardsdatascience.com%2Fthe-failure-of-moving-machine-learning-applications-into-production-3ff48b28f591&user=Bruce+H.+Cottman%2C+Ph.D.&userId=c7bcf6635d7d&source=post_page-c7bcf6635d7d----3ff48b28f591---------------------follow_byline-----------)Nov 24, 2020
 
 ·7 min read·Member-only
+<person role="Data scientist">
+	https://dr-bruce-cottman.medium.com/
+</person>
 
 [Save](https://medium.com/m/signin?actionUrl=https%3A%2F%2Fmedium.com%2F_%2Fbookmark%2Fp%2F3ff48b28f591&operation=register&redirect=https%3A%2F%2Ftowardsdatascience.com%2Fthe-failure-of-moving-machine-learning-applications-into-production-3ff48b28f591&source=--------------------------bookmark_header-----------)# Avoid These Data Pitfalls When Moving Machine Learning Applications Into Production
 
@@ -34,6 +37,7 @@ towardsdatascience.com](/why-is-it-so-hard-to-integrate-machine-learning-into-re
 
 Machine Learning created profits in the year 2020 and will continue to increase profits in the future. However, many problems hold back the progress and success of Machine Learning application rollout to production.
 
+
 I focus on what it is the most significant problem or cause: the quality and quantity of input data in Machine Learning models [1,4].
 
 We realized the quantity of high-quality data was the bottleneck in predictive accuracy when we started showing near, or above, human-level performance in structured data, imagery, game playing, and natural language tasks.
@@ -42,10 +46,12 @@ How many times do we look at the Machine Learning application lifecycle’s conc
 
 ![]()Fi**gure 2. A Machine Learning Lifecycle: . Image Source:** [**Bruce Cottman**](http://@dr-bruce-cottman)We can research and improve the tools of the Machine Learning application lifecycle. But that only lowers the cost of deployment.
 
+<quote label="precition">
 We can change only two components of Machine Learning for a large effect on the quality of the output predictive data:
 
 1. Change the Machine Learning model;
 2. Change the training input data.
+</quote>
 
 Arguably, the Machine Learning model’s choice is not a critical part of deploying a Machine Learning application.
 
@@ -73,9 +79,11 @@ An example of different meanings, depending on the time, is “It’s hot!”.
 
 GPT-3 can be re-trained using an enormous amount of data from that period.
 
+<quote label="data">
 Another example is that Kaggle uses a static, unchanging dataset for a competition.
 
 Usually, Kaggle sponsors find out the winning Machine Learning application can not be used on their incoming business data, the real world, because of Data Drift.
+</quote>
 
 At first blush, the Machine Learning application needs to adapt to the changing environment using learning.
 

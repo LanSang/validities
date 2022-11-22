@@ -1,5 +1,9 @@
 [![Rebecca Vickery](https://miro.medium.com/fit/c/96/96/1*rhvwW5suGypWKG_iJqFWcA.jpeg)](https://rebecca-vickery.medium.com/?source=post_page-----eebcb08f099c--------------------------------)[Rebecca Vickery](https://rebecca-vickery.medium.com/?source=post_page-----eebcb08f099c--------------------------------)[Follow](https://medium.com/m/signin?actionUrl=https%3A%2F%2Fmedium.com%2F_%2Fsubscribe%2Fuser%2F8b7aca3e5b1c&operation=register&redirect=https%3A%2F%2Ftowardsdatascience.com%2Fmachine-learning-in-real-life-eebcb08f099c&user=Rebecca+Vickery&userId=8b7aca3e5b1c&source=post_page-8b7aca3e5b1c----eebcb08f099c---------------------follow_byline-----------)Sep 6, 2019
 
+<person role="Data science lead">
+	https://www.linkedin.com/in/rebecca-vickery/?originalSubdomain=uk
+</person>
+
 ·7 min read·Member-only
 
 [Save](https://medium.com/m/signin?actionUrl=https%3A%2F%2Fmedium.com%2F_%2Fbookmark%2Fp%2Feebcb08f099c&operation=register&redirect=https%3A%2F%2Ftowardsdatascience.com%2Fmachine-learning-in-real-life-eebcb08f099c&source=--------------------------bookmark_header-----------)# Machine Learning in Real Life
@@ -43,6 +47,7 @@ In a Kaggle competition, the problem to solve will be clearly defined upfront. F
 > 
 > 
 
+
 In a real business problem, it is unlikely that you will necessarily be asked to build a specific type of model. It is more likely that a team or product manager will come to you with a business problem. This might look something like this, and sometimes the problem may not even be this well defined.
 
 
@@ -76,13 +81,18 @@ In a Kaggle competition, it is not unusual to spend weeks on tuning a model to g
 
 ## You won’t necessarily use the best model
 
+<quote label="tradeoffs">
 This leads me onto my next point which is that you won’t always use the best model or the newest deep learning methods. Quite often you will be able to deliver more business value with a simpler model such as linear regression. Which takes less time (and therefore costs less to build) and is more explainable.
 
 Your model will have to connect to some kind of endpoint such as a website. The existing tech stack for this endpoint will have a lot of bearing on the type of model you will deploy. There will often be a compromise from both data scientists and software engineers on minimising the engineering work at both ends. If you have a new model which would mean a change to an existing deployment processes or extensive engineering work then you would have to have a very good business case for deploying it.
+</quote>
 
 ## The work doesn’t stop there
 
-Once in production, the model will need to be monitored to ensure that it is performing as well as it did during training and validation and to check for model degradation. For a number of reasons the performance of a model usually degrades over time. This is due to the fact that data will change with time, as customer behaviour changes for example, and therefore your model may start to not perform as well on this new data. For this reason, models will also need to be retrained regularly to maintain business performance.
+Once in production, the model will need to be monitored to ensure that it is performing as well as it did during training and validation and to check for model degradation. 
+<quote label="data">
+For a number of reasons the performance of a model usually degrades over time. This is due to the fact that data will change with time, as customer behaviour changes for example, and therefore your model may start to not perform as well on this new data. For this reason, models will also need to be retrained regularly to maintain business performance.
+</quote>
 
 Additionally, most businesses will have a test and learn cycle for deploying machine learning models. So your first model will usually be version 1 to form a baseline for performance. After that you will make improvements to the model, maybe changing features or tuning the model, to deploy a better version and test against the original model.
 

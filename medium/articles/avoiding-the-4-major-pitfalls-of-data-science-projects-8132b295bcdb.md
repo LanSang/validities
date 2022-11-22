@@ -2,6 +2,10 @@
 
 ·7 min read[Save](https://medium.com/m/signin?actionUrl=https%3A%2F%2Fmedium.com%2F_%2Fbookmark%2Fp%2F8132b295bcdb&operation=register&redirect=https%3A%2F%2Ftowardsdatascience.com%2Favoiding-the-4-major-pitfalls-of-data-science-projects-8132b295bcdb&source=--------------------------bookmark_header-----------)# Avoiding the 4 Major Pitfalls of Data Science Projects
 
+<person role="Deputy Vice President">
+https://www.linkedin.com/in/elad-cohen-ai/?originalSubdomain=il
+</person>
+
 ## *Working on a data science project, especially with a new stakeholder, can be challenging. Learn how to avoid the main pitfalls.*
 
 ![]()Image by [Riskified](https://www.riskified.com/) (used with permission)As data science, machine learning, and AI continue to grow in popularity across business domains, companies are trying to leverage these technologies for new problems. As a data scientist, you know that there’s a high likelihood that your upcoming project might fail. This is especially true if machine learning is only a small aspect of your company’s operations — a feature in the main product or a method for generating valuable business insight. At [Riskified](https://medium.com/riskified-technology), machine learning is at the core of our business, but keeping these pitfalls in mind is always important.
@@ -34,7 +38,10 @@ Sometimes the stakeholders are interested in leveraging machine learning but don
 
 From the data scientist’s perspective, it could look like this: you’ve started a project with a new stakeholder who has little experience working with data science. They want to tap into that ‘ML magic’ but have a hard time defining their specific problem. You might feel pressured to start exploring the data and ‘see what you can come up with.’ While this can work, it should be avoided whenever possible.
 
-First, pinpoint the specific metric you’d like to try and predict — every moment spent on detailing the metric calculation and the definition of done is time well-spent. This can also help you set expectations from the get-go — some stakeholders might expect the impossible from ML, and it’s much better to be upfront about this before starting the project. Feel free to explore the data first, but don’t be tempted to just start and see how well you can do. It’s also crucial to reiterate the inherent unpredictability of any research project. Issues you didn’t consider will pop up and the performance you were hoping for may not be reached. Be very cautious about committing to specific performance goals or delivery dates.
+<quote label="metric">
+First, pinpoint the specific metric you’d like to try and predict — every moment spent on detailing the metric calculation and the definition of done is time well-spent.
+</quote>
+This can also help you set expectations from the get-go — some stakeholders might expect the impossible from ML, and it’s much better to be upfront about this before starting the project. Feel free to explore the data first, but don’t be tempted to just start and see how well you can do. It’s also crucial to reiterate the inherent unpredictability of any research project. Issues you didn’t consider will pop up and the performance you were hoping for may not be reached. Be very cautious about committing to specific performance goals or delivery dates.
 
 As the project progresses, continuously run what-if analyzes before advancing too far ahead. For example, if you’ve started with a simple benchmark model, discuss the accuracy metrics with the stakeholders. Is the model already good enough to be valuable? If not, is it even in the right ballpark? Is the complexity feasible for implementation in production? What other constraints need to be taken into account?
 
