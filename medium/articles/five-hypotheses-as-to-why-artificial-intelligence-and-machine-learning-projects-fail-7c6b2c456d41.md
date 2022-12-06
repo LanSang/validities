@@ -1,8 +1,8 @@
 [![Alison Doucette](https://miro.medium.com/fit/c/96/96/2*oy2LNzAWuL9njI9TqXwdZw.jpeg)](https://alison-doucette.medium.com/?source=post_page-----7c6b2c456d41--------------------------------)[Alison Doucette](https://alison-doucette.medium.com/?source=post_page-----7c6b2c456d41--------------------------------)[Follow](https://medium.com/m/signin?actionUrl=https%3A%2F%2Fmedium.com%2F_%2Fsubscribe%2Fuser%2F9965a65790c2&operation=register&redirect=https%3A%2F%2Ftowardsdatascience.com%2Ffive-hypotheses-as-to-why-artificial-intelligence-and-machine-learning-projects-fail-7c6b2c456d41&user=Alison+Doucette&userId=9965a65790c2&source=post_page-9965a65790c2----7c6b2c456d41---------------------follow_byline-----------)Aug 23, 2019
 
-<quote label="Product manager">
+<person label="Product manager">
 	https://www.linkedin.com/in/alison-doucette-5b40374/details/experience/
-</quote>
+</person>
 
 ·5 min read[Save](https://medium.com/m/signin?actionUrl=https%3A%2F%2Fmedium.com%2F_%2Fbookmark%2Fp%2F7c6b2c456d41&operation=register&redirect=https%3A%2F%2Ftowardsdatascience.com%2Ffive-hypotheses-as-to-why-artificial-intelligence-and-machine-learning-projects-fail-7c6b2c456d41&source=--------------------------bookmark_header-----------)# **Five Hypotheses as to why Artificial Intelligence and Machine Learning projects fail**
 

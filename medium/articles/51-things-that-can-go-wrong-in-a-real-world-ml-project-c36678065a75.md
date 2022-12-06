@@ -2,6 +2,10 @@
 
 ·21 min read·Member-only
 
+<person role="O'Reilly author, Founder">
+https://modern-cdo.medium.com/
+</person>
+
 [Save](https://medium.com/m/signin?actionUrl=https%3A%2F%2Fmedium.com%2F_%2Fbookmark%2Fp%2Fc36678065a75&operation=register&redirect=https%3A%2F%2Ftowardsdatascience.com%2F51-things-that-can-go-wrong-in-a-real-world-ml-project-c36678065a75&source=--------------------------bookmark_header-----------)# 98 things that can go wrong in an ML project
 
 ## Are any of these landmines hiding in your real-world ML initiative?

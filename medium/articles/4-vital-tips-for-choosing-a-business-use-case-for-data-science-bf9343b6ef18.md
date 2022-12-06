@@ -2,6 +2,9 @@
 
 ·5 min read[Save](https://medium.com/m/signin?actionUrl=https%3A%2F%2Fmedium.com%2F_%2Fbookmark%2Fp%2Fbf9343b6ef18&operation=register&redirect=https%3A%2F%2Ftowardsdatascience.com%2F4-vital-tips-for-choosing-a-business-use-case-for-data-science-bf9343b6ef18&source=--------------------------bookmark_header-----------)# 4 Vital Tips for Choosing a Business Use Case for Data Science
 
+<person label='Innovation Analyst'>
+	https://medium.com/@a.koptelov
+</person>
 ## According to Gartner, only 20% of data science projects bring business outcomes by 2022. So, applying data science is a promising but risky endeavor.
 
 ![]()Photo by [Myriam Jessier](https://unsplash.com/@mjessier?utm_source=unsplash&utm_medium=referral&utm_content=creditCopyText) on [Unsplash](https://unsplash.com/s/photos/data-science?utm_source=unsplash&utm_medium=referral&utm_content=creditCopyText)Emails, social media content, app logs, images — given the loads and variety of data we generate every day, harnessing it naturally seems like a recipe for any business challenge. It’s easy to understand this mindset with data science success stories everywhere:

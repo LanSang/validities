@@ -2,6 +2,10 @@
 
 ·6 min read·Member-only
 
+<person role="Data scientist">
+https://medium.com/@dbenzaquenm
+</person>
+
 [Save](https://medium.com/m/signin?actionUrl=https%3A%2F%2Fmedium.com%2F_%2Fbookmark%2Fp%2F2c85cdd4bf45&operation=register&redirect=https%3A%2F%2Ftowardsdatascience.com%2Fwhy-85-of-ai-projects-fail-2c85cdd4bf45&source=--------------------------bookmark_header-----------)# Why 85% of AI projects fail
 
 ## Learn from other people’s mistakes. Life is too short to make them all yourself.
