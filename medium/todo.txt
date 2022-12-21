@@ -6,40 +6,22 @@
 -[x], 5-reasons-your-ml-model-isnt-making-it-to-production-f6965f4e01ec.md
 -[x], 5-simple-reasons-why-data-projects-fail-98fd04c41738.md
 -[x], 5-things-ive-learned-from-high-impact-machine-learning-projects-d74f3de43285.md
--[ ], 51-things-that-can-go-wrong-in-a-real-world-ml-project-c36678065a75.md
--[ ], 9-common-mistakes-beginner-data-scientists-make-91255ddd1311.md
--[ ], 9-reasons-why-machine-learning-models-not-perform-well-in-production-4497d3e3e7a5.md
--[ ], an-introduction-to-machine-learning-engineering-for-production-part-1-2247bbca8a61.md
--[ ], automating-data-drift-thresholding-in-machine-learning-systems-524e6259f59f.md
--[ ], avoiding-the-4-major-pitfalls-of-data-science-projects-8132b295bcdb.md
--[ ], building-ml-models-that-are-useless-ba70df6957d.md
--[ ], building-succesful-machine-learning-models-through-proper-datasets-9058f85de5f7.md
--[ ], challenges-deploying-machine-learning-models-to-production-ded3f9009cb3?source=rss-4a718c031f75------2.md
--[ ], common-reasons-why-machine-learning-projects-fail-62fe811024d6.md
--[ ], data-science-mistakes-to-avoid-data-leakage-e447f88aae1c.md
--[ ], deploying-time-series-forecasting-models-at-scale-part-i-9fc4cb55984e.md
--[ ], drift-in-machine-learning-e49df46803a.md
--[ ], essential-guide-to-machine-learning-model-monitoring-in-production-2fbb36985108.md
+-[x], 51-things-that-can-go-wrong-in-a-real-world-ml-project-c36678065a75.md
+-[x], 9-common-mistakes-beginner-data-scientists-make-91255ddd1311.md
+-[x], 9-reasons-why-machine-learning-models-not-perform-well-in-production-4497d3e3e7a5.md
+-[x], avoiding-the-4-major-pitfalls-of-data-science-projects-8132b295bcdb.md
+-[x], building-ml-models-that-are-useless-ba70df6957d.md
+-[x], common-reasons-why-machine-learning-projects-fail-62fe811024d6.md
 -[ ], five-hypotheses-as-to-why-artificial-intelligence-and-machine-learning-projects-fail-7c6b2c456d41.md
--[ ], from-design-to-deploy-the-whole-lifepath-of-a-machine-learning-app-e9e0357525cc.md
--[ ], how-data-leakage-affects-machine-learning-models-in-practice-f448be6080d0.md
--[ ], how-data-scientists-build-machine-learning-models-in-real-life-f1f333022fb7.md
--[ ], how-not-to-fail-at-your-data-science-project-7e8c84305aa8.md
--[ ], how-to-avoid-mistakes-in-data-science-20d6f9c4274b?source=rss------artificial_intelligence-5.md
--[ ], invaluable-data-science-lessons-to-learn-from-the-failure-of-zillows-flipping-business-25fdc218a62.md
+-[x], how-not-to-fail-at-your-data-science-project-7e8c84305aa8.md
+-[x], how-to-avoid-mistakes-in-data-science-20d6f9c4274b?source=rss------artificial_intelligence-5.md
+-[x], invaluable-data-science-lessons-to-learn-from-the-failure-of-zillows-flipping-business-25fdc218a62.md
 -[ ], machine-learning-in-production-why-is-it-so-difficult-28ce74bfc732.md
--[ ], machine-learning-in-real-life-eebcb08f099c.md
--[ ], machine-learning-model-deployment-a-simplistic-checklist-dc5558a88d1b.md
--[ ], machine-learning-model-drift-9cc43ad530d6.md
--[ ], ml-for-product-managers-a214d823629d.md
--[ ], ml-model-deployment-strategies-72044b3c1410.md
--[ ], model-drift-in-machine-learning-models-8f7e7413b563.md
--[ ], monitoring-machine-learning-models-in-production-how-to-track-data-quality-and-integrity-391435c8a299.md
--[ ], monitoring-your-machine-learning-model-6cf98c106e99.md
--[ ], safely-rolling-out-ml-models-to-production-13e0b8211a2f.md
--[ ], take-your-machine-learning-models-to-production-with-these-5-simple-steps-35aa55e3a43c.md
--[ ], the-failure-of-moving-machine-learning-applications-into-production-3ff48b28f591.md
--[ ], the-gap-between-data-science-and-the-organization-7cfa8b0e2be5.md
+-[x], machine-learning-in-real-life-eebcb08f099c.md
+-[x], ml-for-product-managers-a214d823629d.md
+-[x], take-your-machine-learning-models-to-production-with-these-5-simple-steps-35aa55e3a43c.md
+-[x], the-failure-of-moving-machine-learning-applications-into-production-3ff48b28f591.md
+-[x], the-gap-between-data-science-and-the-organization-7cfa8b0e2be5.md
 -[x], the-pursuit-of-lift-why-ml-projects-fail-f032dc31a303.md
 -[x], the-ultimate-guide-challenges-of-machine-learning-model-deployment-e81b2f6bd83b.md
 -[x], three-key-fails-in-machine-learning-50b386b08bef.md

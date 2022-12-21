@@ -2,6 +2,10 @@
 
 ·4 min read·Member-only
 
+<person role="ML Engineer">
+https://www.linkedin.com/in/sergii-makarevych-78b62339/
+</person>
+
 [Save](https://medium.com/m/signin?actionUrl=https%3A%2F%2Fmedium.com%2F_%2Fbookmark%2Fp%2F38525fb56c60&operation=register&redirect=https%3A%2F%2Ftowardsdatascience.com%2F10-differences-between-a-kaggle-competition-and-real-life-project-38525fb56c60&source=--------------------------bookmark_header-----------)![]()# 10 differences between a Kaggle competition and real life project
 
 There are some very important differences between a Kaggle competition and real life project which beginner Data Scientists should know about. Kaggle creates a fantastic competition spirit. It’s leaderboard drives people to deliver better and better solutions pushing accuracy to the limit. Kaggle’s Notebooks and Discussions make it easy to share knowledge and learn. However real life projects are somewhat different. I hope this article will be helpful for people who consider moving into Data Science starting with Kaggle competitions. I remember I was a little bit overwhelmed when on my first real life project all the models, that typically worked well on Kaggle, miserably failed. I wish I was prepared for this.
