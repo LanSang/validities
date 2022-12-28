@@ -2,6 +2,10 @@
 
 - Downloaded from [this](https://github.com/aritter/twitter_nlp) repo and [this](https://github.com/aritter/twitter_nlp/tree/master/data/annotated/wnut16) subdirectory on Dec 14, 2022.
 
+- I changed the file extensions on train/test/dev to the `.spacy' format so I could use the spacy converter https://spacy.io/usage/training#data. 
+  - `git mv data/dev data/dev.conll`
+  - `git mv data/train data/train.conll`
+  - `git mv data/test data/test.conll`
 
 #### Original
 ---------------------------------------------------------------------

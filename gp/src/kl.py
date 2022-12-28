@@ -35,12 +35,15 @@ class KL(Kern):
         super(KL, self).__init__(input_dim, active_dims, name)
         self.A = A
         self.B = B
+        if input_dim < 2:
+            raise ValueError("A KL divergence requires a distribution, so input_dim must be larger than 1")
 
     
     def _kl(self, p, q):
         '''
         A simple wrapper that renames pk/qk and ensures output is always in base2
         '''
+
         return relative_entropy(pk=p, qk=q, base=2)
         
     def _exp_kl(self, x1: ndarray, x2: ndarray) -> float:
@@ -48,6 +51,8 @@ class KL(Kern):
         x1 and x2 are distributions with length 1 and C columns
         '''
         assert x1.ndim == x2.ndim == 1, f"expected 1, got {x1.ndim}, {x2.ndim}"
+
+
         symetric_kl_divergence = (self._kl(x1, x2) + self._kl(x2, x1))
         return np.exp((-1 * self.A * symetric_kl_divergence) + self.B)
     
@@ -64,6 +69,7 @@ class KL(Kern):
 
         assert len(X) == len(X2) 
         N = len(X)
+
         out = np.zeros((N, N))
         for i in range(N):
             for j in range(N): # 1/2 this computation is redundant TODO

@@ -11,9 +11,19 @@ dependencies:
   - conda-forge::mypy=0.971
   - conda-forge::networkx=2.7.1
   - conda-forge::numpy=1.23.2
+  - pip
+  - pip:
+      - beautifulsoup4==4.11.1
+      - docx==0.2.4
+      - docxpy==0.8.5
+      - sentence-transformers==2.2.2
+      - tner==0.2.1
+      - urlextract==1.8.0
   - conda-forge::python=3.10.6
   - conda-forge::python-chromedriver-binary=2.42.0
   - conda-forge::pytest=7.1.2
   - conda-forge::scikit-learn=1.1.2
+  - conda-forge::spacy=3.4.3
   - conda-forge::tqdm=4.64.1
+  - conda-forge::transformers=4.24.0
 prefix: /home/ubuntu/anaconda3

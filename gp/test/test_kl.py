@@ -25,6 +25,25 @@ def test_gp_regression_wrong_input_dim():
         kernel=KL(input_dim=6)
         GPRegression(kernel=kernel, X=X, Y=Y)
 
+def test_kl_input_dim_1():
+    with pytest.raises(Exception) as exc_info:   
+        raise Exception('some info')
+    
+        # this should raise an error
+        kernel=KL(input_dim=1)
+
+def test_kl_diagonal():
+
+    k = KL(input_dim=2, A=-1, B=0)
+
+    # 10 random bernoulli distros
+    X = np.random.rand(10,2)
+    X = X/(np.sum(X, axis=1).reshape(10, 1))
+    C = k.K(X,X) # covariance matrix
+
+    assert np.unique(np.diag(C)).size == 1
+    assert np.unique(np.diag(C))[0] == 1
+
 def test_gp_regression_wrong_input_dim_checkrows():
 
     X = np.asarray([[.5, .5], [.5, .5], [.5, .5]])
