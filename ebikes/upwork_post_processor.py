@@ -138,7 +138,7 @@ if __name__ == "__main__":
             for commentno, comment in enumerate(comments_about_product):
                 ranked_sents = sorted_ix[commentno][-5:]
                 print("***")
-                print(comment)
+                print(Fore.GREEN + "reddit:" + Fore.WHITE + comment)
                 for r in ranked_sents:
                     print(webpage.page_sentences[r])
     print(Fore.YELLOW + 'Idea: Also check bigram overlap')
