@@ -1,3 +1,13 @@
+### All of the choices and concerns 
+
+- What if they pick different 3 bikes. So there are A, B, C, D bikes. One picks A, B, C the other picks B, C, D.
+- Span disagreements
+- What if they tag stuff that is not even in the post? We can just ignore it.
+ 
+
+
+###
+
 - `dataset.py`
 - GP regression
 - IAA for the turk data. Is it good? See notes below.
