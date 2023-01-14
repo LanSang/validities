@@ -25,7 +25,7 @@ We then identified 499 Reddit comments from the 20 titled threads.
 
 We passed these to MTurk. We asked turkers to identify the first 3 ebikes on the comment. We had turkers extract the exact string from the comment that referenced an ebike. To make the turk file, we did 
 
-`$ echo "url" > turk.csv && cat recs.txt >> turk.csv`
+`$ echo 'url' > turk.csv && gunzip -c ebikes.RC_2022-10.gz | grep -f recs.txt | jq .permalink | sed "s/^/https:\/\/www.reddit.com/g" | tr -d '"' | sort | uniq | shuf | head -10 >> turk.csv`
 
 From there, we can compute P/R etc. for each of these models. This is $\phi^P_p$.
 
