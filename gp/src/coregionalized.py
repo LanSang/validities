@@ -35,7 +35,7 @@ class Coregionalized(object):
         '''
         self._validate_predict(X, output_index)
 
-        Y_metadata = {'output_index': np.array([Y_index])}
+        Y_metadata = {'output_index': np.array([output_index])}
         means, variances = self.m.predict(X,  Y_metadata=Y_metadata)
         assert len(means) == len(X) == len(variances)
 
@@ -69,34 +69,30 @@ if __name__ == "__main__":
 
     np.random.seed(43)
 
+    # we observe 10 points in the input domain, this is \phipredict
     X1 = np.random.rand(110, 1) * 10
-    X2 = np.random.rand(110, 1) * 7
-    X3 = np.random.rand(110, 1) * 3
-    X4 = np.random.rand(110, 1) * 3
-    X = [X1, X2, X3, X4]
+    # we observe a function Y1 for these 10 points
+    Y1 = np.sin(6 * X1) + np.random.randn(*X1.shape) * 0.05
 
-    Y1 = np.sin(X1) + np.random.randn(*X1.shape) * 0.05
-    Y2 = np.sin(X2) + np.random.randn(*X2.shape) * 0.5 + 2.0
-    Y3 = np.sin(X3) + np.random.randn(*X3.shape) * 19 + 4.0
-    Y4 = np.sin(X3) + np.random.randn(*X3.shape) * 19 + 4.0
-    Y = [Y1, Y2, Y3, Y4]
+    # select 7 points in the input domain
+    X2 = X1[0:7]
+    # We observe a correlated function for these 7 points, this is \phiproxy
+    Y2 = np.sin((6 * X2) + .7) + np.random.randn(*X2.shape) * 0.5 + 2.0
+
+    # select 3 points in the input domain
+    X3 = X1[0:3]
+    # We observe a correlated function for these 3 points, this is \phiorg
+    Y3 = np.sin((6.2 * X3) + .67) + np.random.randn(*X3.shape) * 0.5 + 2.0
+
+    # the input to coreginoalized model is 3 sets of (X--Y) pairs
+    X = [X1, X2, X3]
+    Y = [Y1, Y2, Y3]
 
     cr.fit(X, Y)
 
-    Y_index = 0
-
-    Y_metadata1 = {'output_index': np.array([Y_index])}
-
-    X = np.random.rand(100, 4)
+    # we have 3D inputs
+    # This corresponds to observations for 
+    # inputs of X1, X2, X3
+    X = np.random.rand(100, 3)
 
     predictions = cr.predict(X, output_index=0)
-    
-    print(predictions)
-
-    #mean = mean[0][0]
-    #variance = variance[0][0]
-
-    #X1[0][0], X2[0][0], X3[0][0], Y1[0][0], Y2[0][0], Y3[0][0], mean, variance
-    #print(Y[0][0], Y[0][1], Y[0][2]) 
-
-    #print(mean, variance)
