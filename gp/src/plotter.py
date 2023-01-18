@@ -21,8 +21,8 @@ class Plotter(object):
             x='x:Q',
             y='y:Q',
             color=alt.Color("task",scale=scale),
-            fill=alt.Color("task",scale=scale),
-            shape=alt.Color("task",scale=scale)
+            fill="task",
+            shape="task"
         )
         
         return points
