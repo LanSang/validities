@@ -5,6 +5,7 @@ import numpy as np
 import GPy
 
 from dataclasses import dataclass
+from src.coregionalization_input import CoregionalizationInput
 from src.plotter import Plotter
 from src.generator import OneDimensionalGenerator
 from src.data_packer import DataPacker
@@ -51,7 +52,9 @@ class Coregionalized(object):
         _X = self._prepare_X(X, tasks)
         self._validate_predict(tasks)
         means, variances = self.m.predict(_X)
-        return (means, variances)
+
+        # means and variances come out [[1][3][4]], i.e. (n_obs x 1)
+        return (means, variances, tasks)
 
     def _prepare_X(self, X,  tasks):
         # X has a a special input format where the last column is the task
@@ -63,7 +66,9 @@ class Coregionalized(object):
         assert np.unique(tasks).size == self.num_tasks, "tasks must be "
 
     def _validate_predict(self, tasks):
-        assert np.unique(tasks).size == self.num_tasks, f"expecting {self.num_tasks} tasks"
+        pass 
+        # this assertion is not valid. some cases will have 0 tasks
+        # assert np.unique(tasks).size == self.num_tasks, f"expecting {self.num_tasks} tasks"
 
 
 
