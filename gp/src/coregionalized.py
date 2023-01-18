@@ -4,95 +4,72 @@ import pandas as pd
 import numpy as np
 import GPy
 
+from dataclasses import dataclass
+from src.plotter import Plotter
+from src.generator import DataGenerator
+
+import pandas as pd
+import altair as alt
+import GPy
+import numpy as np
+
+
 class Coregionalized(object):
 
 
-    def __init__(self):
+    def __init__(self, num_tasks: int, num_feats: int):
+        '''
+        num_tasks is the total number of categories of Y observations
+        num_feats is the total number of features per X
+        '''
+        self.num_feats = num_feats
+        self.num_tasks=num_tasks
+        ## ** denotes kronneker product here
+        self.kernel = GPy.kern.RBF(input_dim=n_feats) ** GPy.kern.Coregionalize(input_dim=1, output_dim=num_tasks, rank=1)
 
-        self.m = None
+    def fit(self, X, Y, task_indexes):
+        '''
+        X is array of input observations, of shape (n_obs, n_feats)
+        Y is array of output observations, of shape (n_obs,)
+        tasks is array of tasks indexes, of shape (n_obs,)
+        '''
 
-    def fit(self, X, Y):
+        # X has a a special input format where the last column is the task
+        _X = self._prepare_X(X, task_indexes)
 
-        self._validate_fit(X, Y)
+        self._validate_fit(X, Y, task_indexes)
 
-        m = GPy.models.GPCoregionalizedRegression(X_list=X,
-                                                  Y_list=Y)
-
-        m.optimize("bfgs", max_iters=100)
-
+        m = GPy.models.GPRegression(_X, Y, self.kernel)
+        m.optimize()
         self.m = m
 
-        # note input_dim is always 2 in m.input_dim
-        # https://gpy.readthedocs.io/en/deploy/_modules/GPy/models/gp_coregionalized_regression.html
-        # which relies on look at X,Y,ix = build_XY(X,Y) 
-        # because I find the GPy notion of input_dimension pretty counter intuitive I set 
-        # input_dimension to something I defined to refer to the number of observations in X
-        self.input_dimension = len(X)
+    def predict(self, X: ndarray, tasks: ndarray):
+        _X = self._prepare_X(X, tasks)
+        self._validate_predict(tasks)
+        means, variances = self.m.predict(_X)
+        return (means, variances)
 
-    def predict(self, X:ndarray, output_index:int):
-        '''
-        Xnew: The points at which to make a prediction (Nnew x self.input_dim)
-        '''
-        self._validate_predict(X, output_index)
+    def _prepare_X(self, X,  tasks):
+        # X has a a special input format where the last column is the task
+        # This method gets the data into that format
+        return np.hstack([X, tasks])
 
-        Y_metadata = {'output_index': np.array([output_index])}
-        means, variances = self.m.predict(X,  Y_metadata=Y_metadata)
-        assert len(means) == len(X) == len(variances)
+    def _validate_fit(self, X, Y, tasks):
+        assert len(X) == len(Y), 'must have n_obs (X--Y) pairs so len(X) should equal len(Y)'
+        assert np.unique(tasks).size == self.num_tasks, "tasks must be "
 
-        # GPy returns 1-D arrays e.g. means = [[.0323], [.012]]s
-        # These lines unpack these arrays
-        means = means[:,0]
-        variances = variances[:,0]
-        
-        predictions = []
-        ## Note! instances may be multi-dimensional so return the instance_id
-        for instance_id, (mean, variance) in enumerate(zip(means, variances)):
-            predictions.append({"mean": mean,
-                                "variance": variance,
-                                "instance_id": instance_id})
-        return pd.DataFrame(predictions)
-
-    def _validate_fit(self, X, Y):
-        assert len(X) == len(Y), "X and Y must be the same length"
-
-
-    def _validate_predict(self, X, output_index):
-        assert type(output_index) == int
-        assert output_index <= self.input_dimension
-        assert X.shape[1] == self.input_dimension 
+    def _validate_predict(self, tasks):
+        assert np.unique(tasks).size == self.num_tasks, f"expecting {self.num_tasks} tasks"
 
 
 
 if __name__ == "__main__":
 
-    cr = Coregionalized()
-
-    np.random.seed(43)
-
-    # we observe 10 points in the input domain, this is \phipredict
-    X1 = np.random.rand(110, 1) * 10
-    # we observe a function Y1 for these 10 points
-    Y1 = np.sin(6 * X1) + np.random.randn(*X1.shape) * 0.05
-
-    # select 7 points in the input domain
-    X2 = X1[0:7]
-    # We observe a correlated function for these 7 points, this is \phiproxy
-    Y2 = np.sin((6 * X2) + .7) + np.random.randn(*X2.shape) * 0.5 + 2.0
-
-    # select 3 points in the input domain
-    X3 = X1[0:3]
-    # We observe a correlated function for these 3 points, this is \phiorg
-    Y3 = np.sin((6.2 * X3) + .67) + np.random.randn(*X3.shape) * 0.5 + 2.0
-
-    # the input to coreginoalized model is 3 sets of (X--Y) pairs
-    X = [X1, X2, X3]
-    Y = [Y1, Y2, Y3]
-
-    cr.fit(X, Y)
-
-    # we have 3D inputs
-    # This corresponds to observations for 
-    # inputs of X1, X2, X3
-    X = np.random.rand(100, 3)
-
-    predictions = cr.predict(X, output_index=0)
+    num_obs=100
+    n_feats=1
+    spread=2
+    generator = DataGenerator()
+    X, Y, task_indexes = generator.generate(num_obs, n_feats, spread=2)
+    coregionalized = Coregionalized(num_tasks=3, num_feats=n_feats)
+    coregionalized.fit(X, Y, task_indexes)
+    coregionalized.predict(X, task_indexes)
