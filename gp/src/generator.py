@@ -28,6 +28,8 @@ class DataGenerator(object):
         task_indexes is a vector of task indexes, specifying the task for each X--Y pair
         '''
 
+        # TODO: n_feats is currently set to 1
+
         X = np.random.rand(num_obs, n_feats) * spread
 
         Y = np.random.rand(num_obs, 1)

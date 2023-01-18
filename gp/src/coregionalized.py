@@ -25,7 +25,7 @@ class Coregionalized(object):
         self.num_feats = num_feats
         self.num_tasks=num_tasks
         ## ** denotes kronneker product here
-        self.kernel = GPy.kern.RBF(input_dim=n_feats) ** GPy.kern.Coregionalize(input_dim=1, output_dim=num_tasks, rank=1)
+        self.kernel = GPy.kern.RBF(input_dim=num_feats) ** GPy.kern.Coregionalize(input_dim=1, output_dim=num_tasks, rank=1)
 
     def fit(self, X, Y, task_indexes):
         '''
@@ -68,7 +68,7 @@ if __name__ == "__main__":
     num_obs=100
     n_feats=1
     spread=2
-    generator = DataGenerator()
+    generator = DataGenerator(num_obs=100, n_feats=1, spread=2)
     X, Y, task_indexes = generator.generate(num_obs, n_feats, spread=2)
     coregionalized = Coregionalized(num_tasks=3, num_feats=n_feats)
     coregionalized.fit(X, Y, task_indexes)
