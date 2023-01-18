@@ -1,51 +1,60 @@
 import numpy as np
+from typing import List
+from numpy import ndarray
 
-class DataGenerator(object):
-    '''
-    Generate random data to go into a coregionalization model
+from src.observations import Observations
+from src.data_packer import DataPacker
 
-    The key method is generate
-    '''
-        
-    def function_predict(self, x):
-        return np.sin(6 * x) + np.random.rand() * .5
+from src.coregionalization_input import CoregionalizationInput
+    
 
-    def function_proxy(self, x):
-        return np.sin((4.5 * x) + .2) + np.random.rand()* .5
+class OneDimensionalGenerator(object):
 
-    def function_field(self, x):
-        return np.sin((4.7 * x) + .3) + np.random.rand()* .5
+    def __init__(self, f, task_index: int):
+        self._f = f
+        self.task_index = task_index
 
-    def generate(self, num_obs=100, n_feats=1, spread=2):
-        '''
-        Returns:
-        X: a numpy array of shape (num_obs x n_feats)
-        Y: a numpy array of shape (num_obs,)
-        task_indexes: a numpy array of shape (num_obs,)
-
-        X is the input data
-        Y is the observed value, for each point X; i.e. len(X) = len(Y) = num_obs
-        task_indexes is a vector of task indexes, specifying the task for each X--Y pair
-        '''
-
-        # TODO: n_feats is currently set to 1
-
-        X = np.random.rand(num_obs, n_feats) * spread
-
-        Y = np.random.rand(num_obs, 1)
-
-        task_indexes = np.zeros((num_obs, 1))
-
+    def generate(self, X: ndarray) -> ndarray:
+        num_obs = len(X)
+        Y = np.zeros((num_obs, 1))
         for i in range(num_obs):
-            draw = np.random.rand()
-            if draw <= .5:
-                task_indexes[i] = 0
-                Y[i] = self.function_predict(X[i])
-            if draw >.5 <= .8:
-                task_indexes[i] = 1
-                Y[i] = self.function_proxy(X[i])
-            if draw >.8:
-                task_indexes[i] = 2
-                Y[i] = self.function_proxy(X[i])    
-                
-        return X, Y, task_indexes
+            Y[i] = self._f(X[i][0])
+
+        task_indexes = np.zeros_like(Y)
+        task_indexes += self.task_index
+
+        return Observations(X, Y, task_indexes)
+
+
+def function_predict(x):
+    return np.sin(6 * x) + np.random.rand() * .5
+
+def function_proxy(x):
+    return np.sin((4.5 * x) + .2) + np.random.rand()* .5
+
+def function_field(x):
+    return np.sin((4.7 * x) + .3) + np.random.rand()* .5
+
+
+if __name__ == "__main__":
+
+    n_feats = 1
+    n_obs_field = 2
+    n_obs_proxy = 5
+    n_obs_predict = 10
+    spread = 9
+
+    g1 = OneDimensionalGenerator(f=function_predict, task_index=0)
+    X1 = np.random.rand(n_obs_predict, n_feats) * spread
+    predict_observations = g1.generate(X1)
+
+    g2 = OneDimensionalGenerator(f=function_proxy, task_index=1)
+    X2 = np.random.rand(n_obs_proxy, n_feats) * spread
+    proxy_observations = g2.generate(X2)
+
+    g3 = OneDimensionalGenerator(f=function_field, task_index=2)
+    X3 = np.random.rand(n_obs_field, n_feats) * spread
+    field_observations = g3.generate(X3)
+
+    packer = DataPacker()
+    input_: CoregionalizationInput = packer.pack([predict_observations, proxy_observations, field_observations])

@@ -4,27 +4,50 @@ from src.kl import KL
 import pytest
 import random
 from dataclasses import dataclass
+from src.coregionalization_input import CoregionalizationInput
 from src.plotter import Plotter
+from src.data_packer import DataPacker
 from src.coregionalized import Coregionalized
-from src.generator import DataGenerator
+from src.generator import OneDimensionalGenerator
+from src.generator import function_predict
+from src.generator import function_proxy
+from src.generator import function_field
+
 
 def test_coregionalized():
     random.seed(3)
     for i in range(100):
 
         '''fit and predict run with random feats and obs'''
-        num_obs=random.randint(20, 50)
-        n_feats=1
-        spread=random.randint(1, 20)
-        generator = DataGenerator()
-        X, Y, task_indexes = generator.generate(num_obs,
-                                                n_feats,
-                                                spread=spread)
-        coregionalized = Coregionalized(num_tasks=3, num_feats=n_feats)
-        coregionalized.fit(X, Y, task_indexes)
-        coregionalized.predict(X, task_indexes)
+        n_obs_predict = random.randint(20, 50)
+        n_obs_proxy = random.randint(20, 50)
+        n_obs_field = random.randint(20, 50)
+        n_feats = 1
+        spread = random.randint(1, 20)
 
-def test_gp_regression_loads():
+        g1 = OneDimensionalGenerator(f=function_predict, task_index=0)
+        X1 = np.random.rand(n_obs_predict, n_feats) * spread
+        predict_observations = g1.generate(X1)
+
+        g2 = OneDimensionalGenerator(f=function_proxy, task_index=1)
+        X2 = np.random.rand(n_obs_proxy, n_feats) * spread
+        proxy_observations = g2.generate(X2)
+
+        g3 = OneDimensionalGenerator(f=function_field, task_index=2)
+        X3 = np.random.rand(n_obs_field, n_feats) * spread
+        field_observations = g3.generate(X3)
+
+
+        packer = DataPacker()
+        cr_input: CoregionalizationInput = packer.pack([predict_observations,
+                                                        proxy_observations,
+                                                        field_observations])
+
+        coregionalized = Coregionalized(num_tasks=3, num_feats=n_feats)
+        coregionalized.fit(cr_input.X, cr_input.Y, cr_input.task_indexes)
+        coregionalized.predict(cr_input.X, cr_input.task_indexes)
+
+def test_gp_regression_loads_with_KL_kernel():
     
     X = np.asarray([[.5, .5]])
     Y = np.asarray([[.9, .4]])
