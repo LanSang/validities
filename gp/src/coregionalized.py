@@ -22,15 +22,22 @@ import numpy as np
 class Coregionalized(object):
 
 
-    def __init__(self, num_tasks: int, num_feats: int):
+    def __init__(self, num_tasks: int, 
+                 num_feats: int,
+                 lengthscale: int,
+                 variance: float):
         '''
         num_tasks is the total number of categories of Y observations
         num_feats is the total number of features per X
         '''
         self.num_feats = num_feats
         self.num_tasks=num_tasks
+        self.variance = variance
+        self.lengthscale = lengthscale
         ## ** denotes kronneker product here
-        self.kernel = GPy.kern.RBF(input_dim=num_feats) ** GPy.kern.Coregionalize(input_dim=1, output_dim=num_tasks, rank=1)
+        self.kernel = GPy.kern.RBF(input_dim=num_feats,
+                                   variance=variance, 
+                                   lengthscale=lengthscale) ** GPy.kern.Coregionalize(input_dim=1, output_dim=num_tasks, rank=1)
 
     def fit(self, X, Y, task_indexes):
         '''

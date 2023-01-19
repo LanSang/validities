@@ -21,7 +21,11 @@ class Plotter(object):
         return source
 
 
-    def bands_plot(self, X: ndarray, Y:ndarray, tasks: ndarray, variance: ndarray, legend = True):
+    def bands_plot(self,
+                   X: ndarray, Y:ndarray, tasks: ndarray, 
+                   variance: ndarray,
+                   color = "grey",
+                   legend = True):
 
         self._validate_points_plot(X, Y)
 
@@ -33,13 +37,12 @@ class Plotter(object):
         df = self._make_df(X, Y, tasks, variance)
 
         return alt.Chart(df).mark_area(
-            opacity=0.5, color='gray'
+            opacity=0.5
         ).encode(
             x='x',
             y='lower',
             y2='upper',
-            color=color,
-            fill='task'
+            color=alt.Color("task",scale=self.scale, legend=None)
         )
 
 
@@ -55,12 +58,10 @@ class Plotter(object):
         else:
             color = alt.Color("task",scale=self.scale)
 
-        points = alt.Chart(source).mark_point(size=30).encode(
+        points = alt.Chart(source).mark_point(size=60, opacity=1, filled=True).encode(
             x='x:Q',
             y='y:Q',
-            color=color,
-            fill="task",
-            shape="task"
+            color=color
         )
         
         return points
@@ -83,7 +84,21 @@ class Plotter(object):
         
         return line
 
+    def base_plot(self, X: ndarray, Y: ndarray, tasks: ndarray, legend = True):
 
+        source = self._make_df(X, Y, tasks)
+
+        if not legend:
+            color = alt.Color("task",scale=self.scale, legend=None)
+        else:
+            color = alt.Color("task",scale=self.scale)
+
+        return alt.Chart(source).encode(
+            x='x:Q',
+            y='y:Q',
+            color=color,
+            shape="task"
+        )
 
     def _validate_points_plot(self, X, Y):
         if len(X) != len(Y):
