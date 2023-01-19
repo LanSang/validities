@@ -54,7 +54,26 @@ class Coregionalized(object):
         means, variances = self.m.predict(_X)
 
         # means and variances come out [[1][3][4]], i.e. (n_obs x 1)
+        # tasks is the indexes of tasks for each prediction
         return (means, variances, tasks)
+
+    def predict_region(self, 
+                       region_start=1,
+                       region_end=2,
+                       num_tasks=3,
+                       num=200):
+        '''
+        Returns:
+        X: the input points for the prediction
+        means: the predicted points
+        variances: variance at each predicted point
+        tasks: the indexes of tasks
+        '''
+
+        X = np.linspace(region_start, region_end, num=num).reshape(-1, 1)
+        task_indexes = np.random.randint(num_tasks, size=num).reshape((-1, 1))
+        means, variances, tasks = self.predict(X, task_indexes)
+        return X, means, variances, tasks
 
     def _prepare_X(self, X,  tasks):
         # X has a a special input format where the last column is the task
