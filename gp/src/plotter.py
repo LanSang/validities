@@ -13,7 +13,7 @@ class Plotter(object):
         source = pd.DataFrame({
             'x': X[:,0].tolist(),
             'y': Y[:,0].tolist(),
-            'task': [i for i in tasks[:,0].tolist()]
+            'task': [str(int(i)) for i in tasks[:,0].tolist()]
         })
         if bounds is not None:
             source["upper"] = Y[:,0] + bounds.ravel()
