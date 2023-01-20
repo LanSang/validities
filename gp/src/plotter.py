@@ -5,15 +5,17 @@ from numpy import ndarray
 
 class Plotter(object):
 
-    def __init__(self):
-        self.scale = alt.Scale(scheme="dark2")
+    def __init__(self, x_domain=[0, 1.5], y_domain=[-4, 8]):
+        self.scale = alt.Scale(scheme="dark2") 
+        self.x_scale = alt.Scale(domain=x_domain)
+        self.y_scale = alt.Scale(domain=y_domain)
 
 
     def _make_df(self, X, Y, tasks, bounds = None):
         source = pd.DataFrame({
             'x': X[:,0].tolist(),
             'y': Y[:,0].tolist(),
-            'task': [str(int(i)) for i in tasks[:,0].tolist()]
+            'task': tasks[:,0].tolist() #  [str(int(i)) for i in tasks[:,0].tolist()]
         })
         if bounds is not None:
             source["upper"] = Y[:,0] + bounds.ravel()
@@ -37,10 +39,10 @@ class Plotter(object):
         df = self._make_df(X, Y, tasks, variance)
 
         return alt.Chart(df).mark_area(
-            opacity=0.5
+            opacity=0.5, clip=True
         ).encode(
-            x='x',
-            y='lower',
+            x=alt.X('x',scale=self.x_scale),
+            y=alt.Y('lower', scale=self.y_scale),
             y2='upper',
             color=alt.Color("task",scale=self.scale, legend=None)
         )
@@ -58,9 +60,10 @@ class Plotter(object):
         else:
             color = alt.Color("task",scale=self.scale)
 
-        points = alt.Chart(source).mark_point(size=60, opacity=1, filled=True).encode(
-            x='x:Q',
-            y='y:Q',
+        points = alt.Chart(source).mark_point(size=60, opacity=1, filled=True, clip=True).encode(
+            x=alt.X('x',scale=self.x_scale),
+            y=alt.Y('y', scale=self.y_scale),
+            #shape="task",
             color=color
         )
         
@@ -76,9 +79,9 @@ class Plotter(object):
         else:
             color = alt.Color("task",scale=self.scale)
 
-        line = alt.Chart(source).mark_line().encode(
-            x='x:Q',
-            y='y:Q',
+        line = alt.Chart(source).mark_line(clip=True).encode(
+            x=alt.X('x',scale=self.x_scale),
+            y=alt.Y('y', scale=self.y_scale),
             color=color
         )
         

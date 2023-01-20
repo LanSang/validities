@@ -30,10 +30,10 @@ def function_predict(x):
     return np.sin(6 * x) + np.random.rand() * .5
 
 def function_proxy(x):
-    return np.sin((4.5 * x) + .2) + np.random.rand()* .5
+    return 2 + np.sin((4.5 * x) + .2) + np.random.rand()* .5
 
 def function_field(x):
-    return np.sin((4.7 * x) + .3) + np.random.rand()* .5
+    return 4 + np.sin((4.7 * x) + .3) + np.random.rand()* .5
 
 
 if __name__ == "__main__":
