@@ -1,7 +1,7 @@
 import numpy as np
 from typing import List
 from numpy import ndarray
-
+from random import random
 from src.observations import Observations
 from src.data_packer import DataPacker
 
@@ -19,6 +19,23 @@ class OneDimensionalGenerator(object):
         Y = np.zeros((num_obs, 1))
         for i in range(num_obs):
             Y[i] = self._f(X[i][0])
+
+        task_indexes = np.zeros_like(Y)
+        task_indexes += self.task_index
+
+        return Observations(X, Y, task_indexes)
+
+
+class TwoDimensionalRandomGenerator(object):
+
+    def __init__(self, task_index: int):
+        self.task_index = task_index
+
+    def generate(self, X: ndarray) -> ndarray:
+        num_obs = len(X)
+        Y = np.zeros((num_obs, 1))
+        for i in range(num_obs):
+            Y[i] = random()
 
         task_indexes = np.zeros_like(Y)
         task_indexes += self.task_index

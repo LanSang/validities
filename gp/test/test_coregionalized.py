@@ -10,6 +10,7 @@ from src.data_packer import DataPacker
 from src.coregionalized import Coregionalized
 from src.kernels.binary_se2d import BinarySE2D
 from src.generator import OneDimensionalGenerator
+from src.generator import TwoDimensionalRandomGenerator
 from src.generator import function_predict
 from src.generator import function_proxy
 from src.generator import function_field
@@ -57,6 +58,23 @@ def test_coregionalized():
 def test_coregionalized_loads_with_se_kernel():
     se = BinarySE2D(input_dim=2)
     coregionalized = Coregionalized(input_kernel=se, num_tasks=3, num_feats=2)
+
+
+def test_coregionalized_loads_with_2D_se_kernel():
+    n_feats = 2
+    n_obs_field = random.randint(20, 50)
+    X2 = np.random.rand(n_obs_field, n_feats)
+    X2 = np.random.rand(n_obs_field, n_feats)
+    g0 = TwoDimensionalRandomGenerator(task_index=0)
+    g1 = TwoDimensionalRandomGenerator(task_index=1)
+    o1 = g0.generate(X2)
+    o2 = g1.generate(X2)
+    packer = DataPacker()
+    cr_input: CoregionalizationInput = packer.pack([o1,
+                                                    o2])
+    se = BinarySE2D(input_dim=2)
+    coregionalized = Coregionalized(input_kernel=se, num_tasks=2, num_feats=2)
+    coregionalized.fit(cr_input.X, cr_input.Y, cr_input.task_indexes)
 
 
 def test_gp_regression_loads_with_KL_kernel():
