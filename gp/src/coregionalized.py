@@ -24,8 +24,8 @@ class Coregionalized(object):
 
     def __init__(self, num_tasks: int, 
                  num_feats: int,
-                 lengthscale: int,
-                 variance: float):
+                 lengthscale: int=1,
+                 variance: float=1):
         '''
         num_tasks is the total number of categories of Y observations
         num_feats is the total number of features per X

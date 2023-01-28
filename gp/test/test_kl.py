@@ -1,6 +1,6 @@
 from GPy.models import GPRegression
 import numpy as np
-from src.kl import KL
+from src.kernels.kl import KL
 import pytest
 
 def test_gp_regression_loads():
