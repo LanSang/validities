@@ -15,6 +15,13 @@ def test_run_regression():
     kernel=BinarySE2D(input_dim=2)
     GPRegression(kernel=kernel, X=X, Y=Y)
 
+
+def test_gp_regression_wrong_input_dim():
+    with pytest.raises(Exception) as exc_info:   
+        raise Exception('Binary SE2D constructor should not work with 1d input, 2D means two dimensions')
+        kernel = BinarySE2D(input_dim=1)
+
+
 def test_binary():
     se = BinarySE2D(input_dim=2)
     X = np.asarray([[1., 0.], [1., 0.]])

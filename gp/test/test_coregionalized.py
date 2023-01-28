@@ -54,11 +54,10 @@ def test_coregionalized():
         coregionalized.predict(cr_input.X, cr_input.task_indexes)
 
 
-def test_gp_regression_wrong_input_dim():
-    with pytest.raises(ValueError) as exc_info:   
-        raise Exception('Binary SE2D constructor should not work with 1d input, 2D means two dimensions')
+def test_coregionalized_loads_with_se_kernel():
+    se = BinarySE2D(input_dim=2)
+    coregionalized = Coregionalized(input_kernel=se, num_tasks=3, num_feats=2)
 
-        kernel = BinarySE2D(input_dim=1)
 
 def test_gp_regression_loads_with_KL_kernel():
     
@@ -82,12 +81,14 @@ def test_gp_regression_wrong_input_dim():
         kernel=KL(input_dim=6)
         GPRegression(kernel=kernel, X=X, Y=Y)
 
+
 def test_kl_input_dim_1():
     with pytest.raises(Exception) as exc_info:   
         raise Exception('some info')
     
         # this should raise an error
         kernel=KL(input_dim=1)
+
 
 def test_kl_diagonal():
 
