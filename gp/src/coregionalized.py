@@ -17,27 +17,29 @@ import pandas as pd
 import altair as alt
 import GPy
 import numpy as np
+from GPy.kern import Kern
 
 
 class Coregionalized(object):
 
 
-    def __init__(self, num_tasks: int, 
+    def __init__(self,
+                 num_tasks: int, 
                  num_feats: int,
-                 lengthscale: int=1,
-                 variance: float=1):
+                 input_kernel: Kern):
         '''
         num_tasks is the total number of categories of Y observations
         num_feats is the total number of features per X
+        input_kernel is a standard GP kernel (e.g. RBF, KL or binary SE). 
+            - It gets multiplied by the task kernel
         '''
         self.num_feats = num_feats
-        self.num_tasks=num_tasks
-        self.variance = variance
-        self.lengthscale = lengthscale
+        self.num_tasks = num_tasks
+
+        self._validate_init(input_kernel, num_feats)
+
         ## ** denotes kronneker product here
-        self.kernel = GPy.kern.RBF(input_dim=num_feats,
-                                   variance=variance, 
-                                   lengthscale=lengthscale) ** GPy.kern.Coregionalize(input_dim=1, output_dim=num_tasks, rank=1)
+        self.kernel = input_kernel ** GPy.kern.Coregionalize(input_dim=1, output_dim=num_tasks, rank=1)
 
     def fit(self, X, Y, task_indexes):
         '''
@@ -96,6 +98,9 @@ class Coregionalized(object):
         # this assertion is not valid. some cases will have 0 tasks
         # assert np.unique(tasks).size == self.num_tasks, f"expecting {self.num_tasks} tasks"
 
+    def _validate_init(self, input_kernel, num_feats):
+        assert input_kernel is not None, "You must enter an input kernel"
+        assert input_kernel.input_dim == num_feats, "Kernel input dimension must match num feats"
 
 
 if __name__ == "__main__":
@@ -121,6 +126,12 @@ if __name__ == "__main__":
     packer = DataPacker()
     cr_input: CoregionalizationInput = packer.pack([predict_observations, proxy_observations, field_observations])
 
-    coregionalized = Coregionalized(num_tasks=3, num_feats=n_feats)
+    lengthscale: float = 1.
+    variance: float = 1.
+    kernel = GPy.kern.RBF(input_dim=n_feats,
+                          variance=variance, 
+                          lengthscale=lengthscale)
+
+    coregionalized = Coregionalized(input_kernel=kernel, num_tasks=3, num_feats=n_feats)
     coregionalized.fit(cr_input.X, cr_input.Y, cr_input.task_indexes)
-    coregionalized.predict(cr_input.X, task_indexes)
+    coregionalized.predict(cr_input.X, cr_input.task_indexes)

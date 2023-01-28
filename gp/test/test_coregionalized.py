@@ -12,6 +12,7 @@ from src.generator import OneDimensionalGenerator
 from src.generator import function_predict
 from src.generator import function_proxy
 from src.generator import function_field
+from GPy.kern import RBF
 
 
 def test_coregionalized():
@@ -37,13 +38,17 @@ def test_coregionalized():
         X3 = np.random.rand(n_obs_field, n_feats) * spread
         field_observations = g3.generate(X3)
 
-
         packer = DataPacker()
+
         cr_input: CoregionalizationInput = packer.pack([predict_observations,
                                                         proxy_observations,
                                                         field_observations])
 
-        coregionalized = Coregionalized(num_tasks=3, num_feats=n_feats)
+        kernel = RBF(input_dim=n_feats,
+                     variance=1., 
+                     lengthscale=1.)
+
+        coregionalized = Coregionalized(input_kernel=kernel, num_tasks=3, num_feats=n_feats)
         coregionalized.fit(cr_input.X, cr_input.Y, cr_input.task_indexes)
         coregionalized.predict(cr_input.X, cr_input.task_indexes)
 
