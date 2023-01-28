@@ -8,6 +8,7 @@ from src.coregionalization_input import CoregionalizationInput
 from src.plotter import Plotter
 from src.data_packer import DataPacker
 from src.coregionalized import Coregionalized
+from src.kernels.binary_se2d import BinarySE2D
 from src.generator import OneDimensionalGenerator
 from src.generator import function_predict
 from src.generator import function_proxy
@@ -51,6 +52,13 @@ def test_coregionalized():
         coregionalized = Coregionalized(input_kernel=kernel, num_tasks=3, num_feats=n_feats)
         coregionalized.fit(cr_input.X, cr_input.Y, cr_input.task_indexes)
         coregionalized.predict(cr_input.X, cr_input.task_indexes)
+
+
+def test_gp_regression_wrong_input_dim():
+    with pytest.raises(ValueError) as exc_info:   
+        raise Exception('Binary SE2D constructor should not work with 1d input, 2D means two dimensions')
+
+        kernel = BinarySE2D(input_dim=1)
 
 def test_gp_regression_loads_with_KL_kernel():
     
